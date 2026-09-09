@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.LaunchedEffect
@@ -41,7 +42,7 @@ fun showToast(text: String) {
                                 ComposeUI.current.toast {  }
                             }.start()
                         }
-                        .background(darkColorScheme().primaryContainer, AscendiumTheme.shapes.large).padding(8.dp),
+                        .background(AscendiumTheme.colorScheme.primaryContainer, AscendiumTheme.shapes.large).padding(8.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
@@ -57,7 +58,11 @@ fun showToast(text: String) {
                                 ComposeUI.current.toast {  }
                             }.start()
                         },
-                        shape = AscendiumTheme.shapes.medium
+                        shape = AscendiumTheme.shapes.medium,
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = AscendiumTheme.colorScheme.primary,
+                            contentColor = AscendiumTheme.colorScheme.onPrimary
+                        )
                     ) { Text("OK") }
                 }
             }
