@@ -41,7 +41,7 @@ fun SettingEditor(setting: Setting) {
                     text = it
                     setting.value = it
                     ConfigManager.saveConfig()
-                }, modifier = Modifier.weight(1f), singleLine = true)
+                }, modifier = Modifier.weight(1f), singleLine = true, shape = AscendiumTheme.shapes.medium)
             }
             is NumberSetting -> {
                 var num by remember { mutableStateOf(setting.value) }
@@ -90,7 +90,7 @@ fun ResetButton(onClick: () -> Unit) {
         onClick()
     }) { Icon(imageVector = Icons.Replay, contentDescription = null, modifier = Modifier.background(
         AscendiumTheme.colorScheme.primary,
-        RoundedCornerShape(4.dp)
+        AscendiumTheme.shapes.small
     ).size(20.dp)) }
     Spacer(Modifier.width(4.dp))
 }

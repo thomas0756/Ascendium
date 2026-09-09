@@ -4,7 +4,6 @@ import androidx.compose.animation.*
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -53,22 +52,21 @@ fun ConfigContent(preview: Boolean, mod: Module) {
             val previewState = remember { mutableStateOf(false) }
             LaunchedEffect(preview) { previewState.value = preview }
 
-            val corner by animateDpAsState(if (preview) 16.dp else 0.dp)
-            AnimatedVisibility(
+                        AnimatedVisibility(
                 visible = preview,
                 modifier = Modifier
                     .align(Alignment.TopEnd),
                 enter = fadeIn() + expandVertically(),
                 exit = fadeOut() + shrinkVertically()
             ) {
-                RenderPreview(mod, corner)
+                RenderPreview(mod)
             }
         }
     }
 }
 
 @Composable
-fun RenderPreview(mod: ComposableHUDModule, corner: Dp) {
+fun RenderPreview(mod: ComposableHUDModule) {
     var modSize by remember { mutableStateOf(Offset.Zero) }
     Box(
         Modifier
@@ -76,7 +74,7 @@ fun RenderPreview(mod: ComposableHUDModule, corner: Dp) {
                 300.dp,
                 animateDpAsState(mod.previewHeight.dp).value
             )
-            .clip(RoundedCornerShape(corner)),
+            .clip(AscendiumTheme.shapes.medium),
         contentAlignment = Alignment.Center
     ) {
         Image(

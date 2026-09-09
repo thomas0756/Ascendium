@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -48,16 +47,17 @@ fun ConfigUI(mod: Module, fromMods: Boolean) {
             var preview by remember { mutableStateOf(false) }
             val bgColor =
                 AscendiumTheme.colorScheme.background.copy(alpha = Ascendium.settings.backgroundOpacityState.toFloat())
+            val shape = AscendiumTheme.shapes.large
             Box(
                 Modifier
                     .size(boxWidth, boxHeight)
                     .dropShadow(
-                        RoundedCornerShape(32.dp),
+                        AscendiumTheme.shapes.large,
                         Shadow(8.dp, bgColor)
                     )
                     .background(
                         bgColor,
-                        RoundedCornerShape(32.dp)
+                        AscendiumTheme.shapes.large
                     )
             ) {
                 Column {
@@ -66,7 +66,9 @@ fun ConfigUI(mod: Module, fromMods: Boolean) {
                             Spacer(Modifier.width(8.dp))
                             Button(onClick = {
                                 ComposeUI.current.switchTo { ModsUI(true) }
-                            }) { Text("Back", color = AscendiumTheme.colorScheme.onBackground) }
+                            },
+                            shape = AscendiumTheme.shapes.medium)
+                            { Text("Back", color = AscendiumTheme.colorScheme.onBackground) }
                         }
 
                         Text(mod.name, color = AscendiumTheme.colorScheme.onBackground)
@@ -75,7 +77,9 @@ fun ConfigUI(mod: Module, fromMods: Boolean) {
                         Row(modifier = Modifier.align(Alignment.CenterEnd)) {
                             Button(onClick = {
                                 preview = !preview
-                            }) {
+                            },
+                            shape = AscendiumTheme.shapes.medium)
+                            {
                                 Text(
                                     text = if (preview) {
                                         "Disable preview"

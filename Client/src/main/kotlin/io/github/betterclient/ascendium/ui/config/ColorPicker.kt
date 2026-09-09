@@ -8,7 +8,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -173,6 +172,7 @@ fun RowScope.Slider(slider: Pair<String, (Float) -> Pair<Color, Float>>, control
                 input.toIntOrNull()?.let { controller.selectByColor(fn(it.div(255f).coerceIn(0f, 1f)).first, true) }
             }
         },
+        shape = AscendiumTheme.shapes.medium,
         modifier = Modifier.weight(1f),
         singleLine = true
     )
@@ -180,7 +180,7 @@ fun RowScope.Slider(slider: Pair<String, (Float) -> Pair<Color, Float>>, control
     Box(
         Modifier
             .weight(1f)
-            .border(2.dp, AscendiumTheme.colorScheme.outline, RoundedCornerShape(2.dp))
+            .border(2.dp, AscendiumTheme.colorScheme.outline, AscendiumTheme.shapes.small)
             .padding(4.dp),
         contentAlignment = Alignment.Center
     ) {
