@@ -82,11 +82,14 @@ class ClientSettings {
 
     private val _mf = BooleanSetting("Use minecraft font in UI's", true)
     val mcFontState by _mf.state
+    
+    private val _cr = NumberSetting("Corner radius", 10.0, 0.0, 20.0)
+    val cornerRadiusState by _cr.state
 
     val _ui = DropdownSetting("UI Backend (changed on restart)", "Compose", mutableListOf("Compose", "Vulkan", "Offscreen", "Offscreen (compatibility)"))
     val uiBackend by _ui.state
 
-    val settings = mutableListOf(_t, _mf, _bo, _ui)
+    val settings = mutableListOf(_t, _mf, _bo, _cr, _ui)
 }
 
 class AscendiumPreLaunch() : PreLaunchEntrypoint {

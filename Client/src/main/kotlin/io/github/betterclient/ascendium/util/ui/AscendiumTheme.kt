@@ -48,9 +48,9 @@ private fun colorScheme() = when(Ascendium.settings.themeState) {
 }
 
 private fun shapes() = Shapes(
-    small = RoundedCornerShape(0),
-    medium = RoundedCornerShape(0),
-    large = RoundedCornerShape(0)
+    small = RoundedCornerShape((Ascendium.settings.cornerRadiusState * 0.55).dp),
+    medium = RoundedCornerShape(Ascendium.settings.cornerRadiusState.dp),
+    large = RoundedCornerShape((Ascendium.settings.cornerRadiusState * 1.3333).dp)
 )
 
 private fun ColorScheme.setButtonColors() = this.copy(primary = primaryContainer, onPrimary = onPrimaryContainer)
