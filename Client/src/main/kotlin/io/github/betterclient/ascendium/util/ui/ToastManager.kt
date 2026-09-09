@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.darkColorScheme
@@ -42,7 +41,7 @@ fun showToast(text: String) {
                                 ComposeUI.current.toast {  }
                             }.start()
                         }
-                        .background(darkColorScheme().primaryContainer, RoundedCornerShape(16.dp)).padding(8.dp),
+                        .background(darkColorScheme().primaryContainer, AscendiumTheme.shapes.large).padding(8.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
@@ -57,7 +56,8 @@ fun showToast(text: String) {
                                 Thread.sleep(300)
                                 ComposeUI.current.toast {  }
                             }.start()
-                        }
+                        },
+                        shape = AscendiumTheme.shapes.medium
                     ) { Text("OK") }
                 }
             }
