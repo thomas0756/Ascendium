@@ -1,10 +1,13 @@
 package io.github.betterclient.ascendium.util.ui
 
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import io.github.betterclient.ascendium.Ascendium
 
 object AscendiumTheme {
@@ -25,10 +28,13 @@ fun AscendiumTheme(content: @Composable () -> Unit) {
     }
     if (Ascendium.settings.mcFontState) t = t.MCFont()
 
+    val shapes = shapes()
+    
     MaterialTheme(
         colorScheme = colorScheme,
         content = content,
-        typography = t
+        typography = t,
+        shapes = shapes
     )
 }
 
@@ -40,6 +46,12 @@ private fun colorScheme() = when(Ascendium.settings.themeState) {
     "Diamond" -> diamondColorScheme
     else -> throw IllegalStateException()
 }
+
+private fun shapes() = Shapes(
+    small = RoundedCornerShape(0),
+    medium = RoundedCornerShape(0),
+    large = RoundedCornerShape(0)
+)
 
 private fun ColorScheme.setButtonColors() = this.copy(primary = primaryContainer, onPrimary = onPrimaryContainer)
 
