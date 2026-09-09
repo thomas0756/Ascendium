@@ -3,7 +3,6 @@ package io.github.betterclient.ascendium.ui.mods
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -18,7 +17,7 @@ fun ModsContent() {
     var selectedTab by remember { mutableIntStateOf(0) }
     val titles = listOf("Mods", "Client", "Configs")
     Surface(
-        shape = RoundedCornerShape(16.dp),
+        shape = AscendiumTheme.shapes.medium,
         tonalElevation = 4.dp,
         color = AscendiumTheme.colorScheme.background.copy(alpha = 0.4f),
         modifier = Modifier.fillMaxWidth(0.5f),
