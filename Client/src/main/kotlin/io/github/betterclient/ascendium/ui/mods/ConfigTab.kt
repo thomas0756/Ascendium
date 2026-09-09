@@ -6,7 +6,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -43,14 +42,13 @@ fun ConfigTab() {
 private fun NewConfigButton(configs1: MutableState<List<String>>) {
     val showCreate0 = remember { mutableStateOf(false) }
     var showCreate by showCreate0
-    val corner by animateDpAsState(targetValue = if (showCreate) 16.dp else 0.dp)
     AnimatedContent(
         showCreate
     ) {
         if (showCreate) {
             Column(
                 Modifier
-                    .background(AscendiumTheme.colorScheme.secondaryContainer, RoundedCornerShape(corner))
+                    .background(AscendiumTheme.colorScheme.secondaryContainer, AscendiumTheme.shapes.medium)
                     .size(300.dp, 120.dp).detectOutsideClick(showCreate0) { showCreate = false },
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -60,6 +58,7 @@ private fun NewConfigButton(configs1: MutableState<List<String>>) {
                     value = name,
                     onValueChange = { name = it },
                     label = { Text("Config Name") },
+                    shape = AscendiumTheme.shapes.medium,
                     modifier = Modifier.fillMaxWidth(0.8f),
                     colors = OutlinedTextFieldDefaults
                         .colors()
@@ -135,7 +134,7 @@ private fun ConfigList(configs0: MutableState<List<String>>) {
     Column(Modifier
         .background(
             AscendiumTheme.colorScheme.surfaceContainer,
-            shape = RoundedCornerShape(16.dp)
+            shape = AscendiumTheme.shapes.medium
         )
         .requiredHeightIn(max = 300.dp)
         .fillMaxWidth(0.7f)
