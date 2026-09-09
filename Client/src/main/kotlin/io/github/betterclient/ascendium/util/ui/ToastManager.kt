@@ -58,11 +58,6 @@ fun showToast(text: String) {
                                 ComposeUI.current.toast {  }
                             }.start()
                         },
-                        shape = AscendiumTheme.shapes.medium,
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = AscendiumTheme.colorScheme.primary,
-                            contentColor = AscendiumTheme.colorScheme.onPrimary
-                        )
                     ) { Text("OK") }
                 }
             }
