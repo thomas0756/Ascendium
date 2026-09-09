@@ -60,6 +60,7 @@ fun DropdownMenu(
                 trailingIcon = { TrailingIcon(expanded) },
                 modifier = Modifier.fillMaxWidth(),
                 enabled = false,
+                shape = AscendiumTheme.shapes.medium,
                 colors = TextFieldDefaults.colors(
                     focusedTextColor = theme.onSurface, unfocusedTextColor = theme.onSurface, disabledTextColor = theme.onSurface,
                     focusedContainerColor = theme.surface, unfocusedContainerColor = theme.surface, disabledContainerColor = theme.surface,
