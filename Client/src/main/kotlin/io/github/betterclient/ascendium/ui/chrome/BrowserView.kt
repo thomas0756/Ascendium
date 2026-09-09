@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -42,7 +41,7 @@ private const val SCROLL_MULTIPLIER = 30f
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun BrowserView(composeBrowser: ComposeBrowser, modifier: Modifier = Modifier, shape: Shape = RoundedCornerShape(16.dp)) {
+fun BrowserView(composeBrowser: ComposeBrowser, modifier: Modifier = Modifier, shape: Shape = AscendiumTheme.shapes.medium) {
     CefApp.getInstance().doMessageLoopWork(1)
 
     val focusRequester = remember { FocusRequester() }
