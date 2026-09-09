@@ -18,6 +18,7 @@ import io.github.betterclient.ascendium.bridge.minecraft
 import io.github.betterclient.ascendium.event.EventTarget
 import io.github.betterclient.ascendium.event.RenderHudEvent
 import io.github.betterclient.ascendium.module.HUDModule
+import io.github.betterclient.ascendium.util.ui.AscendiumTheme
 
 object KeystrokesMod : HUDModule("Keystrokes", "Show what keys you are pressing", hasBackground = false) {
     val pressedColor by color("Pressed Color", 0x71000000)
@@ -83,10 +84,10 @@ object KeystrokesMod : HUDModule("Keystrokes", "Show what keys you are pressing"
                 .then(if (!mouseKeys && !spaceBar) Modifier.width(100.dp) else Modifier) //there's nothing to aspectRatio off of
                 .aspectRatio(4/3f)
                 .dropShadow(
-                    shape = RoundedCornerShape(8.dp),
+                    shape = AscendiumTheme.shapes.medium,
                     shadow = Shadow(color = Color(unPressedColor), radius = 16.dp)
                 )
-                .background(Color(unPressedColor), RoundedCornerShape(16.dp))
+                .background(Color(unPressedColor), AscendiumTheme.shapes.medium)
         ) {
             val trail = remember { mutableStateListOf<Pair<Float, Float>>() }
 
@@ -140,12 +141,12 @@ object KeystrokesMod : HUDModule("Keystrokes", "Show what keys you are pressing"
         Box(
             modifier = modifier
                 .dropShadow(
-                    shape = RoundedCornerShape(8.dp),
+                    shape = AscendiumTheme.shapes.medium,
                     shadow = Shadow(color = Color(if (key.pressed) pressedColor else unPressedColor), radius = 16.dp)
                 )
                 .background(
                     Color(if (key.pressed) pressedColor else unPressedColor),
-                    RoundedCornerShape(8.dp)
+                    AscendiumTheme.shapes.medium
                 )
                 .padding(8.dp),
             contentAlignment = Alignment.Center
@@ -159,12 +160,12 @@ object KeystrokesMod : HUDModule("Keystrokes", "Show what keys you are pressing"
         Box(
             modifier = Modifier
                 .dropShadow(
-                    shape = RoundedCornerShape(8.dp),
+                    shape = AscendiumTheme.shapes.medium,
                     shadow = Shadow(color = Color(if (key.pressed) pressedColor else unPressedColor), radius = 16.dp)
                 )
                 .background(
                     Color(if (key.pressed) pressedColor else unPressedColor),
-                    RoundedCornerShape(8.dp)
+                    AscendiumTheme.shapes.medium
                 )
                 .weight(1f)
                 .then(if (forceSquare) Modifier.aspectRatio(1f) else Modifier)

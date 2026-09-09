@@ -4,7 +4,6 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -26,6 +25,7 @@ import io.github.betterclient.ascendium.event.EventTarget
 import io.github.betterclient.ascendium.event.RenderHudEvent
 import io.github.betterclient.ascendium.module.HUDModule
 import io.github.betterclient.ascendium.ui.config.rgb
+import io.github.betterclient.ascendium.util.ui.AscendiumTheme
 import java.io.ByteArrayInputStream
 import javax.imageio.ImageIO
 
@@ -145,12 +145,12 @@ object ArmorDisplayMod : HUDModule("Armor display", "Display your armor") {
                 .then(if (renderBackground) Modifier else {
                     Modifier
                         .dropShadow(
-                            shape = RoundedCornerShape(8.dp),
+                            shape = AscendiumTheme.shapes.medium,
                             shadow = Shadow(color = Color(backgroundColor.state.value), radius = 16.dp)
                         )
                         .background(
                             Color(backgroundColor.state.value),
-                            RoundedCornerShape(8.dp)
+                            AscendiumTheme.shapes.medium
                         )
                         .padding(4.dp)
                 })

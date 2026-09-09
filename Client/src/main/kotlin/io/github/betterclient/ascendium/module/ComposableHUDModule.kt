@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
@@ -39,6 +38,7 @@ import io.github.betterclient.ascendium.ui.bridge.SkiaRenderer
 import io.github.betterclient.ascendium.ui.bridge.VulkanSkiaRenderer
 import io.github.betterclient.ascendium.ui.bridge.getScaled
 import io.github.betterclient.ascendium.ui.bridge.getUnscaled
+import io.github.betterclient.ascendium.util.ui.AscendiumTheme
 import io.github.betterclient.ascendium.util.ui.MCFont
 import io.github.betterclient.ascendium.util.ui.ModifyAll
 
@@ -103,10 +103,10 @@ abstract class ComposableHUDModule(name: String, description: String, val hasBac
                             if (hasBackground && renderBackground) {
                                 Modifier
                                     .dropShadow(
-                                        shape = RoundedCornerShape(8.dp),
+                                        shape = AscendiumTheme.shapes.medium,
                                         shadow = Shadow(color = Color(bg), radius = 16.dp)
                                     )
-                                    .background(Color(bg), RoundedCornerShape(8.dp))
+                                    .background(Color(bg), AscendiumTheme.shapes.medium)
                             } else {
                                 Modifier
                             }
@@ -202,11 +202,11 @@ abstract class ComposableHUDModule(name: String, description: String, val hasBac
                     frameRecomposer = recomposer
                 )
 
-                scene.setContent { RenderModules(modules) }
+                scene.setContent { AscendiumTheme { RenderModules(modules) } }
                 modulesLast = modules
             } else {
                 if (modulesLast.map { it.name } != modules.map { it.name }) {
-                    scene.setContent { RenderModules(modules) }
+                    scene.setContent { AscendiumTheme { RenderModules(modules) } }
                 }
                 if (window.fbWidth != scene.size!!.width || window.fbHeight != scene.size!!.height) {
                     val density = Density(window.scale.toFloat().div(2f))

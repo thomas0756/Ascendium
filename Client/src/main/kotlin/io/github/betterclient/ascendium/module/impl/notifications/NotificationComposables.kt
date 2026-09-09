@@ -61,7 +61,8 @@ private fun MultipleNotifications() = Column(Modifier.verticalScroll(rememberScr
                     update = !update
                 }
             },
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f),
+            shape = AscendiumTheme.shapes.medium
         )
         Spacer(Modifier.width(2.dp))
         Button(onClick = {
@@ -69,7 +70,7 @@ private fun MultipleNotifications() = Column(Modifier.verticalScroll(rememberScr
             sortedNotifications = notifications.toList()
                 .sortedByDescending { it.first }
                 .map { it.second }
-        }, modifier = Modifier.weight(1f)) {
+        }, modifier = Modifier.weight(1f), shape = AscendiumTheme.shapes.medium) {
             Text("Clear All")
         }
     }
