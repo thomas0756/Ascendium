@@ -12,7 +12,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinTitleScreen {
     @Inject(method = "init", at = @At(value = "HEAD"), cancellable = true)
     public void init(CallbackInfo ci) {
-        BridgeKt.getMinecraft().openScreen(CustomMainMenu.INSTANCE);
-        ci.cancel();
+        if (BridgeKt.getUseCustomMainMenu()) {
+            BridgeKt.getMinecraft().openScreen(CustomMainMenu.INSTANCE);
+            ci.cancel();
+        }
     }
 }

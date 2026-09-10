@@ -74,14 +74,17 @@ object Logger {
 }
 
 class ClientSettings {
-    private val _bo = NumberSetting("Background opacity", 0.7, 0.1, 1.0)
-    val backgroundOpacityState by _bo.state
-
     private val _t = DropdownSetting("Theme", "Minecraft", mutableListOf("Minecraft", "Diamond", "Dark", "Light"))
     val themeState by _t.state
 
+    private val _cmm = BooleanSetting("Custom main menu", true)
+    val customMainMenuState by _cmm.state
+    
     private val _mf = BooleanSetting("Use minecraft font in UI's", true)
     val mcFontState by _mf.state
+    
+    private val _bo = NumberSetting("Background opacity", 0.7, 0.1, 1.0)
+    val backgroundOpacityState by _bo.state
     
     private val _cr = NumberSetting("Corner radius", 10.0, 0.0, 20.0)
     val cornerRadiusState by _cr.state
@@ -89,7 +92,7 @@ class ClientSettings {
     val _ui = DropdownSetting("UI Backend (changed on restart)", "Compose", mutableListOf("Compose", "Vulkan", "Offscreen", "Offscreen (compatibility)"))
     val uiBackend by _ui.state
 
-    val settings = mutableListOf(_t, _mf, _bo, _cr, _ui)
+    val settings = mutableListOf(_t, _cmm, _mf, _bo, _cr, _ui)
 }
 
 class AscendiumPreLaunch() : PreLaunchEntrypoint {

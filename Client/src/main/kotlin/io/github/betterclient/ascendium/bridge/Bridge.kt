@@ -1,5 +1,6 @@
 package io.github.betterclient.ascendium.bridge
 
+import io.github.betterclient.ascendium.Ascendium
 import org.jetbrains.skia.BackendRenderTarget
 import java.awt.image.BufferedImage
 import kotlin.math.sqrt
@@ -18,6 +19,9 @@ val minecraft: MinecraftBridge by lazy {
         Class.forName("net.minecraft.client.MinecraftClient").getMethod("getInstance").invoke(null) as MinecraftBridge
     }
 }
+
+val useCustomMainMenu: Boolean
+    get() = Ascendium.settings.customMainMenuState
 
 fun createOpenGLTexture(): TextureBridge {
     return BridgeAdapterManager.useBridgeUtil({ it.openglTextureAdapter }) as TextureBridge //the 26.2 implementation of OpenGLTexture should work on vulkan aswell
