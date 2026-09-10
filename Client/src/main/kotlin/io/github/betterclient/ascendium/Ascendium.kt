@@ -74,7 +74,7 @@ object Logger {
 }
 
 class ClientSettings {
-    private val _t = DropdownSetting("Theme", "Minecraft", mutableListOf("Minecraft", "Diamond", "Dark", "Light", "Regolith"))
+    private val _t = DropdownSetting("Theme", "Minecraft", mutableListOf("Minecraft", "Cornflower", "Dark", "Light", "Regolith"))
     val themeState by _t.state
 
     private val _cmm = BooleanSetting("Custom main menu", true)

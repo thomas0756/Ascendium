@@ -41,7 +41,8 @@ private fun colorScheme() = when(Ascendium.settings.themeState) {
     "Dark" -> darkColorScheme().setButtonColors()
     "Light" -> lightColorScheme().setButtonColors()
     "Minecraft" -> mcColorScheme
-    "Diamond" -> diamondColorScheme
+    "Diamond" -> cornflowerColorScheme
+    "Cornflower" -> cornflowerColorScheme
     "Regolith" -> regolithColorScheme
     else -> throw IllegalStateException()
 }
@@ -105,7 +106,7 @@ private val mcColorScheme = ColorScheme(
     onTertiaryFixedVariant = Color(0xFFB9F2FF),
 )
 
-private val diamondColorScheme = ColorScheme(
+private val cornflowerColorScheme = ColorScheme(
     primary = Color(0xFF6C99FF),
     onPrimary = Color(0xFF001D53),
     primaryContainer = Color(0xFF2E468A),
