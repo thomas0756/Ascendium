@@ -23,9 +23,7 @@ object AscendiumTheme {
 @Composable
 fun AscendiumTheme(content: @Composable () -> Unit) {
     val colorScheme = colorScheme()
-    var t = Typography().ModifyAll {
-        it.copy(color = colorScheme.onBackground)
-    }
+    var t = Typography()
     if (Ascendium.settings.mcFontState) t = t.MCFont()
 
     val shapes = shapes()
@@ -159,63 +157,50 @@ private val diamondColorScheme = ColorScheme(
 )
 
 private val regolithColorScheme = ColorScheme(
-    primary = Color(0xFFFFFFFF),
-    onPrimary = Color(0xFFBEC3BD),
-    primaryContainer = Color(0xFFE5E6E4),
-    onPrimaryContainer = Color(0xFF1E1E1E),
+    primary = Color(0xD9FFFFFF),
+    onPrimary = Color(0xFF303230),
+    primaryContainer = Color(0xA6FFFFFF),
+    onPrimaryContainer = Color(0xFF303230),
     inversePrimary = Color(0xFFBEC3BD),
-
-    secondary = Color(0xFFBEC3BD),
-    onSecondary = Color(0xFF1E1E1E),
-    secondaryContainer = Color(0xFF303230),
+    secondary = Color(0x80FFFFFF),
+    onSecondary = Color(0xFFBEC3BD),
+    secondaryContainer = Color(0x70FFFFFF),
     onSecondaryContainer = Color(0xFFE5E6E4),
-
-    tertiary = Color(0xFF8F938F),
-    onTertiary = Color(0xFFFFFFFF),
-    tertiaryContainer = Color(0xFF454745),
+    tertiary = Color(0x70FFFFFF),
+    onTertiary = Color(0xFFBEC3BD),
+    tertiaryContainer = Color(0x60FFFFFF),
     onTertiaryContainer = Color(0xFFE5E6E4),
-
     background = Color(0xFF101110),
     onBackground = Color(0xFFE5E6E4),
-
-    surface = Color(0xFF181918),
+    surface = Color(0x45FFFFFF),
     onSurface = Color(0xFFE5E6E4),
-    surfaceVariant = Color(0xFF303230),
+    surfaceVariant = Color(0x55FFFFFF),
     onSurfaceVariant = Color(0xFFBEC3BD),
-
     surfaceTint = Color(0xFFFFFFFF),
-
     inverseSurface = Color(0xFFE5E6E4),
     inverseOnSurface = Color(0xFF181918),
-
     error = Color(0xFFC53434),
     onError = Color(0xFFFFFFFF),
     errorContainer = Color(0xFF7A2020),
     onErrorContainer = Color(0xFFF9DADA),
-
-    outline = Color(0xFF8F938F),
-    outlineVariant = Color(0xFF454745),
-
+    outline = Color(0x60FFFFFF),
+    outlineVariant = Color(0x48FFFFFF),
     scrim = Color(0x99000000),
-
-    surfaceBright = Color(0xFF454745),
+    surfaceBright = Color(0x70FFFFFF),
     surfaceDim = Color(0xFF101110),
-    surfaceContainer = Color(0xFF1E201E),
-    surfaceContainerHigh = Color(0xFF292B29),
-    surfaceContainerHighest = Color(0xFF343634),
-    surfaceContainerLow = Color(0xFF181918),
-    surfaceContainerLowest = Color(0xFF0C0D0C),
-
+    surfaceContainer = Color(0x3CFFFFFF),
+    surfaceContainerHigh = Color(0x58FFFFFF),
+    surfaceContainerHighest = Color(0x68FFFFFF),
+    surfaceContainerLow = Color(0x3CFFFFFF),
+    surfaceContainerLowest = Color(0x30FFFFFF),
     primaryFixed = Color(0xFFE5E6E4),
     primaryFixedDim = Color(0xFFBEC3BD),
     onPrimaryFixed = Color(0xFF1E1E1E),
     onPrimaryFixedVariant = Color(0xFF303230),
-
     secondaryFixed = Color(0xFFBEC3BD),
     secondaryFixedDim = Color(0xFF8F938F),
     onSecondaryFixed = Color(0xFF1E1E1E),
     onSecondaryFixedVariant = Color(0xFF303230),
-
     tertiaryFixed = Color(0xFFBEC3BD),
     tertiaryFixedDim = Color(0xFF8F938F),
     onTertiaryFixed = Color(0xFF1E1E1E),

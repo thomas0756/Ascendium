@@ -30,6 +30,8 @@ fun ModsContent() {
                 Tab(
                     selected = selectedTab == index,
                     onClick = { selectedTab = index },
+                    selectedContentColor = AscendiumTheme.colorScheme.onSurface,
+                    unselectedContentColor = AscendiumTheme.colorScheme.onSurface,
                     text = { Text(title, maxLines = 1, overflow = TextOverflow.Ellipsis) }
                 )
             }

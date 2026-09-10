@@ -44,9 +44,9 @@ private fun LoadingScreen() {
         ParallaxBackground()
         Box(Modifier.fillMaxSize().padding(16.dp)) {
             Column(Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                Text("Ascendium", fontSize = 72.sp)
+                Text("Ascendium", fontSize = 72.sp, color = Color.White)
 
-                Text(CustomLoadingScreen.progressText, fontSize = 36.sp)
+                Text(CustomLoadingScreen.progressText, fontSize = 36.sp, color = Color.White)
             }
 
             Box(

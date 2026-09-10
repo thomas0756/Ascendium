@@ -63,9 +63,10 @@ private fun NewConfigButton(configs1: MutableState<List<String>>) {
                     colors = OutlinedTextFieldDefaults
                         .colors()
                         .copy(
-                            unfocusedTextColor = AscendiumTheme.colorScheme.onBackground,
-                            focusedTextColor = AscendiumTheme.colorScheme.onBackground,
-                            unfocusedContainerColor = AscendiumTheme.colorScheme.primaryContainer //make the container visible while unfocused
+                            focusedTextColor = AscendiumTheme.colorScheme.onSurface,
+                            unfocusedTextColor = AscendiumTheme.colorScheme.onSurface,
+                            focusedContainerColor = AscendiumTheme.colorScheme.surfaceContainer,
+                            unfocusedContainerColor = AscendiumTheme.colorScheme.surfaceContainer //make the container visible while unfocused
                         )
                 )
                 Row(verticalAlignment = Alignment.CenterVertically) {

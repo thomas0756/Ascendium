@@ -81,7 +81,7 @@ fun DropdownMenu(
             Box(Modifier
                 .fillMaxWidth()
                 .height((min(options.size, 5) * 30).dp)
-                .background(color = theme.background)
+                .background(color = theme.surfaceContainerHigh)
             ) {
                 LazyColumn(
                     modifier = Modifier
@@ -94,7 +94,10 @@ fun DropdownMenu(
                             curOption.value = option
                             expanded = false
                         }) {
-                            Text(option)
+                            Text(
+                                option,
+                                color = theme.onSurface
+                            )
                         }
                     }
                 }

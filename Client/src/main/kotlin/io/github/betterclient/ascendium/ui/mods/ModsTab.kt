@@ -63,8 +63,14 @@ private fun ModuleView(module: Module) {
     val backgroundColor by animateColorAsState(
         targetValue = if (enabled) theme.primaryContainer else theme.surfaceContainer
     )
+    val contentColor = if (enabled) {
+        theme.onPrimaryContainer
+    } else {
+        theme.onSurface
+    }
 
-    Box(Modifier
+    Box(
+        Modifier
         .size(WIDTH.dp, HEIGHT.dp)
         .dropShadow(
             shapes.medium,
@@ -87,6 +93,7 @@ private fun ModuleView(module: Module) {
     ) {
         Text(
             module.name,
+            color = contentColor,
             modifier = Modifier.align(Alignment.Center)
         )
     }
