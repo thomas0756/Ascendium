@@ -70,10 +70,12 @@ object PositionDisplayMod : HUDModule("Position Display", "Display your position
             .replace(
                 "%B%",
                 player.biome
-                    .replace("minecraft:", "")
-                    .replaceFirstChar { if (it.isLowerCase()) it.titlecase(getDefault()) else it.toString() },
-                ignoreCase = true
+                    .substringAfter(':')
+                    .split("_")
+                    .joinToString(" ") { it.replaceFirstChar(Char::uppercaseChar) },
+                    ignoreCase = true
             )
+            //TODO: Use the biome's translation key instead of just polishing the ID
             .replace("%F%", player.facing, ignoreCase = true)
     }
 
