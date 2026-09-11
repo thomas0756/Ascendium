@@ -5,7 +5,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -45,17 +44,17 @@ private fun LoadingScreen() {
         ParallaxBackground()
         Box(Modifier.fillMaxSize().padding(16.dp)) {
             Column(Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                Text("Ascendium", fontSize = 72.sp)
+                Text("Ascendium", fontSize = 72.sp, color = Color.White)
 
-                Text(CustomLoadingScreen.progressText, fontSize = 36.sp)
+                Text(CustomLoadingScreen.progressText, fontSize = 36.sp, color = Color.White)
             }
 
             Box(
                 Modifier
                     .fillMaxWidth(0.9f)
                     .height(64.dp)
-                    .border(16.dp, AscendiumTheme.colorScheme.primaryContainer, RoundedCornerShape(8.dp))
-                    .clip(RoundedCornerShape(8.dp))
+                    .border(16.dp, AscendiumTheme.colorScheme.primaryContainer, AscendiumTheme.shapes.medium)
+                    .clip(AscendiumTheme.shapes.medium)
                     .align(Alignment.BottomCenter)
             ) {
                 Box(

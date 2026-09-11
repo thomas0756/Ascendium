@@ -22,7 +22,7 @@ import io.github.betterclient.ascendium.util.ui.Icons
 fun SettingEditor(setting: Setting) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Spacer(Modifier.width(32.dp))
-        Text(setting.name, fontSize = 18.sp)
+        Text(setting.name, fontSize = 18.sp, color = AscendiumTheme.colorScheme.onSurface)
         Spacer(Modifier.width(4.dp))
         when(setting) {
             is BooleanSetting -> {
@@ -41,12 +41,12 @@ fun SettingEditor(setting: Setting) {
                     text = it
                     setting.value = it
                     ConfigManager.saveConfig()
-                }, modifier = Modifier.weight(1f), singleLine = true)
+                }, modifier = Modifier.weight(1f), singleLine = true, shape = AscendiumTheme.shapes.medium)
             }
             is NumberSetting -> {
                 var num by remember { mutableStateOf(setting.value) }
                 ResetButton { setting.reset(); num = setting.value }
-                Text(String.format("%.1f", num))
+                Text(String.format("%.1f", num), color = AscendiumTheme.colorScheme.onSurface)
                 Slider(
                     num.toFloat(),
                     onValueChange = {
@@ -90,7 +90,7 @@ fun ResetButton(onClick: () -> Unit) {
         onClick()
     }) { Icon(imageVector = Icons.Replay, contentDescription = null, modifier = Modifier.background(
         AscendiumTheme.colorScheme.primary,
-        RoundedCornerShape(4.dp)
+        AscendiumTheme.shapes.small
     ).size(20.dp)) }
     Spacer(Modifier.width(4.dp))
 }

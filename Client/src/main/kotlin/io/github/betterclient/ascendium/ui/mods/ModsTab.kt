@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -58,26 +57,30 @@ const val HEIGHT = 120
 @Composable
 private fun ModuleView(module: Module) {
     var enabled by remember { mutableStateOf(module.enabled) }
-    val cornerRadius by animateDpAsState(
-        targetValue = if (enabled) 32.dp else 16.dp
-    )
 
     val theme = AscendiumTheme.colorScheme
+    val shapes = AscendiumTheme.shapes
     val backgroundColor by animateColorAsState(
         targetValue = if (enabled) theme.primaryContainer else theme.surfaceContainer
     )
+    val contentColor = if (enabled) {
+        theme.onPrimaryContainer
+    } else {
+        theme.onSurface
+    }
 
-    Box(Modifier
+    Box(
+        Modifier
         .size(WIDTH.dp, HEIGHT.dp)
         .dropShadow(
-            RoundedCornerShape(cornerRadius),
+            shapes.medium,
             Shadow(8.dp, backgroundColor)
         )
         .background(
             backgroundColor,
-            RoundedCornerShape(cornerRadius)
+            shapes.medium
         )
-        .clip(RoundedCornerShape(cornerRadius))
+        .clip(shapes.medium)
         .onClick(
             matcher = PointerMatcher.mouse(PointerButton.Secondary),
             onClick = {
@@ -90,6 +93,7 @@ private fun ModuleView(module: Module) {
     ) {
         Text(
             module.name,
+            color = contentColor,
             modifier = Modifier.align(Alignment.Center)
         )
     }

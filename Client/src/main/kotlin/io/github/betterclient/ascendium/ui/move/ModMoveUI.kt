@@ -5,7 +5,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -48,7 +47,6 @@ fun MoveModuleUI(mods: List<ComposableHUDModule>, backToConfig: Boolean?) {
                     512.dp
                 }
             }, animationSpec = tween(500))
-            val round by animateDpAsState(if (start) 0.dp else 32.dp, animationSpec = tween(500))
 
             Center {
                 Box(
@@ -56,7 +54,7 @@ fun MoveModuleUI(mods: List<ComposableHUDModule>, backToConfig: Boolean?) {
                         .size(animWidth, animHeight)
                         .background(
                             AscendiumTheme.colorScheme.background.copy(alpha = Ascendium.settings.backgroundOpacityState.toFloat()),
-                            RoundedCornerShape(round)
+                            AscendiumTheme.shapes.large
                         )
                 )
             }
@@ -72,7 +70,7 @@ fun MoveModuleUI(mods: List<ComposableHUDModule>, backToConfig: Boolean?) {
                         ModsUI(false)
                     }
                 }
-            }, shape = RoundedCornerShape(16.dp)) {
+            }, shape = AscendiumTheme.shapes.medium) {
                 Text(if (backToConfig == true) "Back" else "Mods")
             }
         }

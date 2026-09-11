@@ -6,6 +6,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.*
@@ -86,13 +87,17 @@ private fun BoxScope.CornerButtons() {
             ComposeUI.current.onRenderThread {
                 minecraft.setScreen(MCScreen.OPTIONS_SCREEN)
             }
-        }) {
+        },
+        shape = AscendiumTheme.shapes.medium)
+        {
             Text("Options")
         }
 
         TextButton(onClick = {
             exitProcess(0)
-        }) {
+        },
+        shape = AscendiumTheme.shapes.medium)
+        {
             Text("Quit")
         }
     }
@@ -101,7 +106,14 @@ private fun BoxScope.CornerButtons() {
 @Composable
 private fun BoxScope.ModeButtons(onAscend: () -> Unit) {
     Column(Modifier.align(Alignment.Center), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        TextButton(onAscend, modifier = Modifier.width(512.dp)) {
+        TextButton(
+            onAscend,
+            modifier = Modifier.width(512.dp),
+            shape = AscendiumTheme.shapes.medium,
+            colors = ButtonDefaults.textButtonColors(
+                contentColor = Color.White
+            )
+        ) {
             Text("Ascendium", fontSize = 72.sp)
         }
 
@@ -113,6 +125,7 @@ private fun BoxScope.ModeButtons(onAscend: () -> Unit) {
                     minecraft.setScreen(MCScreen.SELECT_WORLD_SCREEN)
                 }
             },
+            shape = AscendiumTheme.shapes.medium,
             modifier = Modifier
                 .width(512.dp)
                 .alpha(alpha)
@@ -126,6 +139,7 @@ private fun BoxScope.ModeButtons(onAscend: () -> Unit) {
                     minecraft.setScreen(MCScreen.MULTIPLAYER_SCREEN)
                 }
             },
+            shape = AscendiumTheme.shapes.medium,
             modifier = Modifier
                 .width(512.dp)
                 .alpha(alpha)
@@ -139,6 +153,7 @@ private fun BoxScope.ModeButtons(onAscend: () -> Unit) {
                     minecraft.setScreen(MCScreen.REALMS_MAIN_SCREEN)
                 }
             },
+            shape = AscendiumTheme.shapes.medium,
             modifier = Modifier
                 .width(512.dp)
                 .alpha(alpha)

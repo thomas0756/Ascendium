@@ -60,6 +60,7 @@ fun DropdownMenu(
                 trailingIcon = { TrailingIcon(expanded) },
                 modifier = Modifier.fillMaxWidth(),
                 enabled = false,
+                shape = AscendiumTheme.shapes.medium,
                 colors = TextFieldDefaults.colors(
                     focusedTextColor = theme.onSurface, unfocusedTextColor = theme.onSurface, disabledTextColor = theme.onSurface,
                     focusedContainerColor = theme.surface, unfocusedContainerColor = theme.surface, disabledContainerColor = theme.surface,
@@ -80,7 +81,7 @@ fun DropdownMenu(
             Box(Modifier
                 .fillMaxWidth()
                 .height((min(options.size, 5) * 30).dp)
-                .background(color = theme.background)
+                .background(color = theme.surfaceContainerHigh)
             ) {
                 LazyColumn(
                     modifier = Modifier
@@ -93,7 +94,10 @@ fun DropdownMenu(
                             curOption.value = option
                             expanded = false
                         }) {
-                            Text(option)
+                            Text(
+                                option,
+                                color = theme.onSurface
+                            )
                         }
                     }
                 }

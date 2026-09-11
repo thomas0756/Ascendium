@@ -3,7 +3,6 @@ package io.github.betterclient.ascendium.ui.mods
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -54,13 +53,14 @@ fun ModsUI(smallen: Boolean) {
             }
 
             val bgColor = AscendiumTheme.colorScheme.background.copy(alpha = Ascendium.settings.backgroundOpacityState.toFloat())
+            val shapes = AscendiumTheme.shapes
             Box(Modifier
                 .size(animatedWidth, animatedHeight)
                 .dropShadow(
-                    RoundedCornerShape(32.dp),
+                    shapes.large,
                     Shadow(8.dp, bgColor)
                 )
-                .background(bgColor, RoundedCornerShape(32.dp))
+                .background(bgColor, shapes.large)
                 .safeContentPadding()
             ) {
                 Row(modifier = Modifier.align(Alignment.TopStart)) {
@@ -70,7 +70,7 @@ fun ModsUI(smallen: Boolean) {
                             MoveModuleUI(ModManager.getHUDModules(), false)
                         }
                     },
-                        shape = RoundedCornerShape(16.dp)
+                        shape = shapes.medium
                     ) {
                         Text("Back")
                     }
@@ -82,7 +82,8 @@ fun ModsUI(smallen: Boolean) {
                         ComposeUI.current.switchTo {
                             EasterEggUI()
                         }
-                    }, colors = ButtonDefaults.buttonColors()) {
+                    },  shape = shapes.medium,
+                        colors = ButtonDefaults.buttonColors()) {
                         Text("Ascendium", fontSize = 18.sp, color = rainbowAsState().value)
                     }
                     Spacer(Modifier.width(8.dp))

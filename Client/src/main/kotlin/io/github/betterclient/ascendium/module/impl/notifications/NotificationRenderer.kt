@@ -19,7 +19,7 @@ internal fun RenderNotification(notification: Notification, onDelete: () -> Unit
         Modifier
             .background(
                 AscendiumTheme.colorScheme.background.copy(alpha = Ascendium.settings.backgroundOpacityState.toFloat()),
-                RoundedCornerShape(16.dp)
+                AscendiumTheme.shapes.medium
             )
             .size(250.dp, 150.dp)
     ) {
@@ -95,6 +95,7 @@ private fun NotificationButtons(notification: Notification) {
             Button(
                 notification.button1.onClick,
                 modifier = Modifier.fillMaxWidth(),
+                shape = AscendiumTheme.shapes.medium,
                 colors = ButtonDefaults.buttonColors(containerColor = notification.button1.color)
             ) {
                 Text(notification.button1.text)

@@ -142,7 +142,7 @@ object HeadTrackerMod : HUDModule("Mouse Tracker", "Track your mouse movements")
                 Box(
                     modifier = Modifier
                         .offset(x = tx.dp, y = ty.dp)
-                        .size(BALL_SIZE.dp)
+                        .size(BALL_SIZE.toFloat().dp)
                         .background(Color(BALL_COLOR).copy(alpha = (index + 1) / trail.size.toFloat()), RoundedCornerShape(BALL_SIZE.dp))
                 )
             }
@@ -150,7 +150,7 @@ object HeadTrackerMod : HUDModule("Mouse Tracker", "Track your mouse movements")
             Box(
                 modifier = Modifier
                     .offset(x = x.dp, y = y.dp)
-                    .size(BALL_SIZE.dp)
+                    .size(BALL_SIZE.toFloat().dp)
                     .background(Color(BALL_COLOR), RoundedCornerShape(BALL_SIZE.dp))
             )
         }

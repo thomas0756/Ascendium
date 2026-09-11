@@ -15,6 +15,7 @@ import io.github.betterclient.ascendium.module.ComposableHUDModule
 import io.github.betterclient.ascendium.module.Module
 import io.github.betterclient.ascendium.ui.bridge.ComposeUI
 import io.github.betterclient.ascendium.ui.move.MoveModuleUI
+import io.github.betterclient.ascendium.util.ui.AscendiumTheme
 
 @Composable
 fun ModToggle(mod: Module) {
@@ -31,7 +32,9 @@ fun ModToggle(mod: Module) {
             Spacer(Modifier.width(4.dp))
             Button(onClick = {
                 ComposeUI.current.switchTo { MoveModuleUI(listOf(mod), true) }
-            }) { Text("Move") }
+            },
+            shape = AscendiumTheme.shapes.small)
+            { Text("Move") }
         }
     }
 }

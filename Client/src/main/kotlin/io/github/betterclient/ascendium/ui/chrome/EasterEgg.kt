@@ -67,7 +67,9 @@ private fun RowScope.Navigation() {
         ComposeUI.current.switchTo {
             ModsUI(true)
         }
-    }) { Text("Back") }
+    },
+    shape = AscendiumTheme.shapes.medium)
+    { Text("Back") }
 
     IconButton(
         onClick = { composeBrowser.back() },
@@ -100,7 +102,8 @@ private fun RowScope.Navigation() {
         keyboardActions = KeyboardActions(onGo = {
             composeBrowser.setUrl(textFieldValue)
             keyboardController?.hide()
-        })
+        }),
+        shape = AscendiumTheme.shapes.medium
     )
 
     IconButton(onClick = {

@@ -1,10 +1,13 @@
 package io.github.betterclient.ascendium.util.ui
 
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import io.github.betterclient.ascendium.Ascendium
 
 object AscendiumTheme {
@@ -20,15 +23,16 @@ object AscendiumTheme {
 @Composable
 fun AscendiumTheme(content: @Composable () -> Unit) {
     val colorScheme = colorScheme()
-    var t = Typography().ModifyAll {
-        it.copy(color = colorScheme.onBackground)
-    }
+    var t = Typography()
     if (Ascendium.settings.mcFontState) t = t.MCFont()
 
+    val shapes = shapes()
+    
     MaterialTheme(
         colorScheme = colorScheme,
         content = content,
-        typography = t
+        typography = t,
+        shapes = shapes
     )
 }
 
@@ -37,9 +41,17 @@ private fun colorScheme() = when(Ascendium.settings.themeState) {
     "Dark" -> darkColorScheme().setButtonColors()
     "Light" -> lightColorScheme().setButtonColors()
     "Minecraft" -> mcColorScheme
-    "Diamond" -> diamondColorScheme
+    "Diamond" -> cornflowerColorScheme
+    "Cornflower" -> cornflowerColorScheme
+    "Regolith" -> regolithColorScheme
     else -> throw IllegalStateException()
 }
+
+private fun shapes() = Shapes(
+    small = RoundedCornerShape((Ascendium.settings.cornerRadiusState * 0.55).dp),
+    medium = RoundedCornerShape(Ascendium.settings.cornerRadiusState.dp),
+    large = RoundedCornerShape((Ascendium.settings.cornerRadiusState * 1.3333).dp)
+)
 
 private fun ColorScheme.setButtonColors() = this.copy(primary = primaryContainer, onPrimary = onPrimaryContainer)
 
@@ -94,7 +106,7 @@ private val mcColorScheme = ColorScheme(
     onTertiaryFixedVariant = Color(0xFFB9F2FF),
 )
 
-private val diamondColorScheme = ColorScheme(
+private val cornflowerColorScheme = ColorScheme(
     primary = Color(0xFF6C99FF),
     onPrimary = Color(0xFF001D53),
     primaryContainer = Color(0xFF2E468A),
@@ -143,4 +155,55 @@ private val diamondColorScheme = ColorScheme(
     tertiaryFixedDim = Color(0xFF5C3A70),
     onTertiaryFixed = Color(0xFF432258),
     onTertiaryFixedVariant = Color(0xFFF0D9FF),
+)
+
+private val regolithColorScheme = ColorScheme(
+    primary = Color(0xD9FFFFFF),
+    onPrimary = Color(0xFF303230),
+    primaryContainer = Color(0xA6FFFFFF),
+    onPrimaryContainer = Color(0xFF303230),
+    inversePrimary = Color(0xFFBEC3BD),
+    secondary = Color(0x80FFFFFF),
+    onSecondary = Color(0xFFBEC3BD),
+    secondaryContainer = Color(0x70FFFFFF),
+    onSecondaryContainer = Color(0xFFE5E6E4),
+    tertiary = Color(0x70FFFFFF),
+    onTertiary = Color(0xFFBEC3BD),
+    tertiaryContainer = Color(0x60FFFFFF),
+    onTertiaryContainer = Color(0xFFE5E6E4),
+    background = Color(0xFF101110),
+    onBackground = Color(0xFFE5E6E4),
+    surface = Color(0x45FFFFFF),
+    onSurface = Color(0xFFE5E6E4),
+    surfaceVariant = Color(0x55FFFFFF),
+    onSurfaceVariant = Color(0xFFBEC3BD),
+    surfaceTint = Color(0xFFFFFFFF),
+    inverseSurface = Color(0xFFE5E6E4),
+    inverseOnSurface = Color(0xFF181918),
+    error = Color(0xFFC53434),
+    onError = Color(0xFFFFFFFF),
+    errorContainer = Color(0xFF7A2020),
+    onErrorContainer = Color(0xFFF9DADA),
+    outline = Color(0x60FFFFFF),
+    outlineVariant = Color(0x48FFFFFF),
+    scrim = Color(0x99000000),
+    surfaceBright = Color(0x70FFFFFF),
+    surfaceDim = Color(0xFF101110),
+    surfaceContainer = Color(0x3CFFFFFF),
+    surfaceContainerHigh = Color(0x58FFFFFF),
+    surfaceContainerHighest = Color(0x68FFFFFF),
+    surfaceContainerLow = Color(0x3CFFFFFF),
+    surfaceContainerLowest = Color(0x30FFFFFF),
+    primaryFixed = Color(0xFFE5E6E4),
+    primaryFixedDim = Color(0xFFBEC3BD),
+    onPrimaryFixed = Color(0xFF1E1E1E),
+    onPrimaryFixedVariant = Color(0xFF303230),
+    secondaryFixed = Color(0xFFBEC3BD),
+    secondaryFixedDim = Color(0xFF8F938F),
+    onSecondaryFixed = Color(0xFF1E1E1E),
+    onSecondaryFixedVariant = Color(0xFF303230),
+    tertiaryFixed = Color(0xFFBEC3BD),
+    tertiaryFixedDim = Color(0xFF8F938F),
+    onTertiaryFixed = Color(0xFF1E1E1E),
+    onTertiaryFixedVariant = Color(0xFF303230),
 )
