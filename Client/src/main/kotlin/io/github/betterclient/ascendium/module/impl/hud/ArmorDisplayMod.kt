@@ -29,7 +29,7 @@ import io.github.betterclient.ascendium.ui.config.rgb
 import java.io.ByteArrayInputStream
 import javax.imageio.ImageIO
 
-object ArmorDisplayMod : HUDModule("Armor display", "Display your armor") {
+object ArmorDisplayMod : HUDModule("Armor Display", "Display your armor") {
     var helmet: ItemStackBridge? by mutableStateOf(null)
     var chestplate: ItemStackBridge? by mutableStateOf(null)
     var leggings: ItemStackBridge? by mutableStateOf(null)
